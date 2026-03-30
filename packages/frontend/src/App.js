@@ -102,6 +102,7 @@ function App() {
                 data.map((item) => (
                   <li key={item.id}>
                     {item.name}
+                    &nbsp;&nbsp;
                     <button onClick={() => handleDelete(item.id)}>Delete</button>
                   </li>
                 ))
