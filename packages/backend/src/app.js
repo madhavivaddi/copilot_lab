@@ -24,7 +24,7 @@ db.exec(`
 `);
 
 // Insert some initial data
-const initialItems = ['Item 1', 'Item 2', 'Item 3'];
+const initialItems = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'];
 const insertStmt = db.prepare('INSERT INTO items (name) VALUES (?)');
 
 initialItems.forEach(item => {
@@ -60,6 +60,27 @@ app.post('/api/items', (req, res) => {
   } catch (error) {
     console.error('Error creating item:', error);
     res.status(500).json({ error: 'Failed to create item' });
+  }
+});
+
+app.delete('/api/items/:id', (req, res) => {
+  try {
+    const itemId = Number(req.params.id);
+
+    if (!Number.isInteger(itemId) || itemId <= 0) {
+      return res.status(400).json({ error: 'Valid item id is required' });
+    }
+
+    const deleteResult = db.prepare('DELETE FROM items WHERE id = ?').run(itemId);
+
+    if (deleteResult.changes === 0) {
+      return res.status(404).json({ error: 'Item not found' });
+    }
+
+    res.status(204).send();
+  } catch (error) {
+    console.error('Error deleting item:', error);
+    res.status(500).json({ error: 'Failed to delete item' });
   }
 });
 
