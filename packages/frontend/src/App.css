@@ -73,6 +73,28 @@ li:last-child {
   border-bottom: none;
 }
 
+.item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.item-name {
+  overflow-wrap: anywhere;
+}
+
+.delete-button {
+  padding: 6px 12px;
+  background-color: #e74c3c;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.delete-button:hover {
+  background-color: #c0392b;
+}
+
 .error {
   color: #d32f2f;
   font-weight: bold;
