@@ -33,15 +33,23 @@ section {
 
 .add-item-section form {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   margin-top: 10px;
 }
 
 input {
-  flex: 1;
+  flex: 1 1 220px;
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
+}
+
+select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #ffffff;
 }
 
 button {
@@ -80,8 +88,72 @@ li:last-child {
   gap: 12px;
 }
 
+.item-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
 .item-name {
   overflow-wrap: anywhere;
+}
+
+.item-name.completed {
+  text-decoration: line-through;
+  color: #6e6e6e;
+}
+
+.item-description,
+.item-due-date,
+.item-priority,
+.item-tags {
+  color: #595959;
+}
+
+.item-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.list-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.bulk-controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.list-controls label {
+  font-weight: 600;
+}
+
+.list-controls input {
+  flex: 1 1 200px;
+}
+
+.edit-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 8px;
+}
+
+.secondary-button {
+  background-color: #1976d2;
+  color: #ffffff;
+}
+
+.secondary-button:hover {
+  background-color: #0d5ca6;
 }
 
 .delete-button {
@@ -97,5 +169,10 @@ li:last-child {
 
 .error {
   color: #d32f2f;
+  font-weight: bold;
+}
+
+.success {
+  color: #1b5e20;
   font-weight: bold;
 }
